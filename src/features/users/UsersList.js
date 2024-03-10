@@ -1,7 +1,10 @@
 import { useGetUsersQuery } from "./usersApiSlice"
 import User from './User'
+import useTitle from "../../hooks/useTitle"
+import PulseLoader from 'react-spinners/PulseLoader'
 
 const UsersList = () => {
+    useTitle('techNotes: Users List')
 
     const {
         data: users,
@@ -9,7 +12,7 @@ const UsersList = () => {
         isSuccess,
         isError,
         error
-    } = useGetUsersQuery(undefined, {
+    } = useGetUsersQuery('usersList', {
         pollingInterval: 60000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
@@ -17,7 +20,7 @@ const UsersList = () => {
 
     let content
 
-    if (isLoading) content = <p>Loading...</p>
+    if (isLoading) content = <PulseLoader color={"#FFF"} />
 
     if (isError) {
         content = <p className="errmsg">{error?.data?.message}</p>
@@ -31,22 +34,22 @@ const UsersList = () => {
             ? ids.map(userId => <User key={userId} userId={userId} />)
             : null
 
-        content = (
-            <table className="table table--users">
-                <thead className="table__thead">
-                    <tr>
-                        <th scope="col" className="table__th user__username">Username</th>
-                        <th scope="col" className="table__th user__roles">Roles</th>
-                        <th scope="col" className="table__th user__edit">Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableContent}
-                </tbody>
-            </table>
-        )
+            content = (
+                <table className="table table--users">
+                    <thead className="table__thead">
+                        <tr>
+                            <th scope="col" className="table__th user__username">Username</th>
+                            <th scope="col" className="table__th user__roles">Roles</th>
+                            <th scope="col" className="table__th user__edit">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tableContent}
+                    </tbody>
+                </table>
+            )
+        }
+    
+        return content
     }
-
-    return content
-}
-export default UsersList
+    export default UsersList
