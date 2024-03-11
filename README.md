@@ -23,3 +23,11 @@
 
 Explore the final website at [https://monica-clearning-services.onrender.com](https://monica-clearning-services.onrender.com).
 
+## Build with
+- React Redux 
+- RTK Query
+- React Router Dom
+- JSON Web Token (JWT)
+- MongoDB
+- Express
+- Node.js
