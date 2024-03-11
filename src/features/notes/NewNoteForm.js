@@ -9,7 +9,6 @@ const NewNoteForm = ({ users }) => {
     useAddNewNoteMutation();
 
   const navigate = useNavigate();
-  console.log(users, "users");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [userId, setUserId] = useState(users[0]?.id);

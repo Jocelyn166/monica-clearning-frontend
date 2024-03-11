@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useTitle from "../../hooks/useTitle";
-import { useSelector } from "react-redux";
-import { selectCurrentToken } from "../../features/auth/authSlice";
 
 const Welcome = () => {
   const { username, isManager, isAdmin } = useAuth();
-  const token = useSelector(selectCurrentToken);
-  console.log(token, "token in welcome");
 
   useTitle(`clearningNotes: ${username}`);
 
