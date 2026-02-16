@@ -21,7 +21,6 @@
 - Only Managers and Admins can create new users
 - Desktop mode is most important but should be available in mobile
 
-Explore the final website at [https://monica-clearning-services.onrender.com](https://monica-clearning-services.onrender.com).
 
 ## Build with
 - React Redux 
